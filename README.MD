@@ -1,1 +1,3 @@
-#USE TOMCAT9
+#Requiremwnt
+1. Tomcat 9
+2. Java 12
