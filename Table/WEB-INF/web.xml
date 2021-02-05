@@ -1,0 +1,10 @@
+<web-app>
+	<servlet>
+			<servlet-name>abc</servlet-name>
+			<servlet-class>table</servlet-class>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>abc</servlet-name>
+			<url-pattern>/tut</url-pattern>
+			</servlet-mapping >
+		</web-app>
