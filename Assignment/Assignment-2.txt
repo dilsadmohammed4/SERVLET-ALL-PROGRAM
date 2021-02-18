@@ -1,0 +1,140 @@
+
+1. Write a java program to input your name ,age, address, telephone_no. Use ‘this’ keyword  to accept data through constructor. create an object through parameterized constructor without ‘this’. Use copy constructor to create another object. Display the values of objects using default constructor and all other  constructor.
+
+============================
+Using this keyword
+===============================
+class Student {
+
+    String name, address;
+    int age;
+    String phno;
+
+    Student(String name, String address, int age, String phno) {
+        this.name = name;
+        this.address = address;
+        this.age = age;
+        this.phno = phno;
+
+    }
+
+    Student(Student c) {
+        name = c.name;
+        address = c.address;
+        age = c.age;
+        phno = c.phno;
+
+    }
+
+    public void Display() {
+        System.out.println("Name: " + name);
+        System.out.println("Address: " + address);
+        System.out.println("Age: " + age);
+        System.out.println("Phone Number: " + phno);
+    }
+
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Student ob1 = new Student("Dilsad Mohammed", "Puri", 21, "7377983977");
+        Student ob2 = new Student(ob1);
+        ob2.Display();
+
+    }
+}
+
+============================
+Not Using this keyword
+========================
+
+class Student {
+
+    String name, address;
+    int age;
+    String phno;
+
+    Student(String na, String ad, int ag, String no) {
+        name = na;
+        address = ad;
+        age = ag;
+        phno = no;
+
+    }
+
+    Student(Student c) {
+        name = c.name;
+        address = c.address;
+        age = c.age;
+        phno = c.phno;
+
+    }
+
+    public void Display() {
+        System.out.println("Name: " + name);
+        System.out.println("Address: " + address);
+        System.out.println("Age: " + age);
+        System.out.println("Phone Number: " + phno);
+    }
+
+}
+
+public class Test2 {
+    public static void main(String[] args) {
+        Student ob1 = new Student("Dilsad Mohammed", "Puri", 21, "7377983977");
+        Student ob2 = new Student(ob1);
+        ob2.Display();
+
+    }
+}
+
+==============================================
+2. Class A having two data members (x,y).Class B having two data members(p,q) and Class C having two data members(m,n). Class B inherits class A and class C inherits class B. All data members are numeric data. Use super to input data through constructor. Then display the  values belongs to each class using display() method.
+
+
+class A {
+    int x;
+    int y;
+
+    A(int x, int y) {
+        this.x = x;
+        this.y = y;
+
+    }
+}
+
+class B extends A {
+    int p, q;
+
+    B(int x, int y, int p, int q) {
+        super(x, y);
+        this.p = p;
+        this.q = q;
+
+    }
+}
+
+class C extends B {
+    int m, n;
+
+    C(int x, int y, int p, int q, int m, int n) {
+        super(x, y, p, q);
+        this.m = m;
+        this.n = n;
+    }
+
+    public void Display() {
+        System.out.println("X=" + x + " Y=" + y);
+        System.out.println("P=" + p + " Q=" + q);
+        System.out.println("M=" + m + " N=" + n);
+
+    }
+}
+
+public class ABC {
+    public static void main(String[] args) {
+
+        C ob = new C(23, 6, 45, 5, 12, 6);
+        ob.Display();
+    }
+}

@@ -1,0 +1,273 @@
+Assignment of RMI-
+1. Write a client server program to using RMI, where client sends appropriate 
+data of a circle  and server returns the area and perimeter of circle to the client.
+
+
+
+import java.rmi.*;
+
+public class CircleClient {
+    public static void main(String[] args) {
+        try {
+            String R_URL = "rmi://" + args[0] + "/CircleServer";
+            CircleInterface asi = (CircleInterface) Naming.lookup(R_URL);
+            System.out.println("Radius Of Circle: " + args[1]);
+            int a = Integer.parseInt(args[1]);
+            System.out.println("Area Of Circle: " + asi.Area(a));
+            System.out.println("Perimeter Of Circle: " + asi.Perimeter(a));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+==============================================================================
+
+
+import java.rmi.*;
+
+public interface CircleInterface extends Remote {
+
+    public double Area(int x) throws RemoteException;
+
+    public double Perimeter(int x) throws RemoteException;
+
+}
+
+
+==============================================================================
+
+
+import java.rmi.*;
+
+import java.rmi.server.*;
+
+public class CircleImpInterf extends UnicastRemoteObject implements CircleInterface {
+
+    public CircleImpInterf() throws RemoteException {
+
+    }
+
+    public double Area(int r) throws RemoteException {
+        double circleArea;
+        double pi = 3.141;
+        circleArea = pi * r * r;
+        return circleArea;
+
+    }
+
+    public double Perimeter(int r) throws RemoteException {
+        double circlePerimeter;
+        double pi = 3.141;
+        circlePerimeter = 2 * pi * r;
+        return circlePerimeter;
+
+    }
+}
+
+
+==============================================================================
+
+
+
+import java.rmi.*;
+
+public class CircleServer {
+    public static void main(String args[]) {
+        try {
+            CircleImpInterf aii = new CircleImpInterf();
+            Naming.bind("CircleServer", aii);
+            System.out.println("Server is Started....");
+        } catch (Exception e) {
+            System.out.println("Exception in caught in server" + e);
+        }
+    }
+}
+
+
+
+==============================================================================
+==============================================================================
+
+
+2.  Write a client server program to using RMI, where client sends appropriate 
+data of a triangle and server returns the area and perimeter of triangle to the client.
+
+
+import java.rmi.*;
+
+public class TriClient {
+    public static void main(String[] args) {
+        try {
+            String R_URL = "rmi://" + args[0] + "/TriServer";
+            TriInterface asi = (TriInterface) Naming.lookup(R_URL);
+            System.out.println("Triangle Base: " + args[1]);
+            System.out.println("Triangle Height: " + args[2]);
+            System.out.println("Triangle Side: " + args[3]);
+            int b = Integer.parseInt(args[1]);
+            int h = Integer.parseInt(args[2]);
+            int s = Integer.parseInt(args[3]);
+            System.out.println(asi.TriArea(b, h, s));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+==============================================================================
+
+
+
+import java.rmi.*;
+
+public interface TriInterface extends Remote {
+
+    public String TriArea(int x, int y, int z) throws RemoteException;
+
+}
+
+
+==============================================================================
+
+
+
+import java.rmi.*;
+
+import java.rmi.server.*;
+
+public class TriImpInterf extends UnicastRemoteObject implements TriInterface {
+
+    public TriImpInterf() throws RemoteException {
+
+    }
+
+    public String TriArea(int b, int h, int s) throws RemoteException {
+        double triangleArea, trianglePerimeter;
+        double pi = 3.141;
+        triangleArea = (b * h) / 2;
+        trianglePerimeter = b + h + s;
+        return "Area Of Triangle:" + triangleArea + "\n" + "Perimeter Of Triangle:" + trianglePerimeter;
+
+    }
+
+}
+
+
+
+==============================================================================
+
+
+import java.rmi.*;
+
+public class TriServer {
+    public static void main(String args[]) {
+        try {
+            TriImpInterf aii = new TriImpInterf();
+            Naming.bind("TriServer", aii);
+            System.out.println("Server is Started....");
+        } catch (Exception e) {
+            System.out.println("Exception in caught in server" + e);
+        }
+    }
+}
+
+
+
+==============================================================================
+==============================================================================
+
+3. Create a remote object having a method as arraySum(int []a) which takes an array
+   as an argument and return the sum of elements in the array to client.
+
+
+import java.util.*;
+import java.rmi.*;
+
+public class ArrClient {
+    public static void main(String[] args) {
+        try {
+
+            Scanner input = new Scanner(System.in);
+            System.out.print("Enter the Localhost Adress:");
+            String lhost = input.next();
+            String R_URL = "rmi://" + lhost + "/ArrServer";
+            ArrInterface asi = (ArrInterface) Naming.lookup(R_URL);
+            System.out.print("Enter the array range:");
+            int num = input.nextInt();
+            int array[] = new int[num];
+            System.out.print("Enter the array element:");
+            for (int i = 0; i < num; i++) {
+                array[i] = input.nextInt();
+            }
+            System.out.println(asi.arraySum(array));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+==============================================================================
+
+
+
+import java.rmi.*;
+
+public interface ArrInterface extends Remote {
+
+    public String arraySum(int array[]) throws RemoteException;
+
+}
+
+
+==============================================================================
+
+
+
+import java.rmi.*;
+
+import java.rmi.server.*;
+
+public class ArrImpInterf extends UnicastRemoteObject implements ArrInterface {
+
+    public ArrImpInterf() throws RemoteException {
+
+    }
+
+    public String arraySum(int array[]) throws RemoteException {
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            sum = sum + array[i];
+        }
+        return "Sum:" + sum;
+
+    }
+
+}
+
+
+
+==============================================================================
+
+
+
+
+import java.rmi.*;
+
+public class ArrServer {
+    public static void main(String args[]) {
+        try {
+            ArrImpInterf aii = new ArrImpInterf();
+            Naming.bind("ArrServer", aii);
+            System.out.println("Server is Started....");
+        } catch (Exception e) {
+            System.out.println("Exception in caught in server" + e);
+        }
+    }
+}
+
+
+==============================================================================
+==============================================================================

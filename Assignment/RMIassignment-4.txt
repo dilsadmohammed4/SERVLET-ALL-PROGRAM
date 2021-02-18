@@ -1,0 +1,158 @@
+1. Write RMI program to accept Your Name from Client and Server replies “ Hello ….Name”
+
+i.
+
+import java.rmi.*;
+
+class HelloClient {
+    public static void main(String args[]) {
+        try {
+            String R_URL = "rmi://" + args[0] + "/AddServer";
+            HelloServIntf asi = (HelloServIntf) Naming.lookup(R_URL);
+            String a = args[1];
+            System.out.println(asi.name(a));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+=========================================================================
+
+ii.
+
+import java.rmi.*;
+import java.net.*;
+
+class HelloServer {
+    public static void main(String args[]) {
+        try {
+            HelloIntfImpl aii = new HelloIntfImpl();
+            Naming.bind("AddServer", aii);
+			System.out.println("Server is Started....");
+        } catch (Exception e) {
+            System.out.println("Exception in caught in server" + e);
+        }
+    }
+}
+
+=========================================================================
+
+iii.
+
+import java.rmi.*;
+
+public interface HelloServIntf extends Remote {
+    public String name(String x) throws RemoteException;
+}
+
+=========================================================================
+
+iv.
+
+import java.rmi.*;
+import java.rmi.server.*;
+
+public class HelloIntfImpl extends UnicastRemoteObject implements HelloServIntf {
+    public HelloIntfImpl() throws RemoteException {
+
+    }
+
+    public String name(String x) throws RemoteException {
+        return "Hello "+x;
+    }
+}
+
+
+=========================================================================
+=========================================================================
+
+2. Write RMI program to accept Two numbers and display addition, subtraction and product of these numbers
+
+i.
+
+import java.rmi.*;
+
+class AllClient {
+    public static void main(String args[]) {
+        try {
+            String R_URL = "rmi://" + args[0] + "/AddServer";
+            AllServIntf asi = (AllServIntf) Naming.lookup(R_URL);
+            System.out.println("The first number is " + args[1]);
+            System.out.println("The second number is " + args[2]);
+            int a = Integer.parseInt(args[1]);
+            int b = Integer.parseInt(args[2]);
+            System.out.println("The sum of two numbers= " + asi.addition(a, b));
+            System.out.println("The sub of two numbers= " + asi.subtraction(a, b));
+            System.out.println("The mul of two numbers= " + asi.multiplication(a, b));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+=========================================================================
+
+ii.
+
+import java.rmi.*;
+
+class AllServer {
+    public static void main(String args[]) {
+        try {
+            AllIntfImpl aii = new AllIntfImpl();
+            Naming.bind("AddServer", aii);
+			System.out.println("Server is Started....");
+        } catch (Exception e) {
+            System.out.println("Exception in caught in server" + e);
+        }
+    }
+}
+
+
+=========================================================================
+
+iii.
+
+import java.rmi.*;
+
+public interface AllServIntf extends Remote {
+    public int addition(int x, int y) throws RemoteException;
+
+    public int subtraction(int x, int y) throws RemoteException;
+
+    public int multiplication(int x, int y) throws RemoteException;
+}
+
+
+=========================================================================
+
+
+
+iv.
+
+import java.rmi.*;
+import java.rmi.server.*;
+
+public class AllIntfImpl extends UnicastRemoteObject implements AllServIntf {
+    public AllIntfImpl() throws RemoteException {
+
+    }
+
+    public int addition(int x, int y) throws RemoteException {
+        return (x + y);
+    }
+
+    public int subtraction(int x, int y) throws RemoteException {
+        return (x - y);
+    }
+
+    public int multiplication(int x, int y) throws RemoteException {
+        return (x * y);
+    }
+}
+
+
+=========================================================================
+=========================================================================

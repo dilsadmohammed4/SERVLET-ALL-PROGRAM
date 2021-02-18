@@ -1,0 +1,270 @@
+
+
+===============================================
+SUPER KEYWORD
+===============================================
+1. super is used to refer immediate parent class instance variable
+
+class Color {
+    String color = "white";
+}
+
+class MainColor extends Color {
+    String color = "black";
+
+    void printColor() {
+        System.out.println(color);
+        System.out.println(super.color);
+    }
+}
+
+class Test1 {
+    public static void main(String args[]) {
+        MainColor ob = new MainColor();
+        ob.printColor();
+    }
+}
+
+===============================================
+
+2. Super can be used to invoke parent class method.
+
+class Color1 {
+    void AA() {
+        System.out.println("Black...");
+    }
+}
+
+class MainColor2 extends Color1 {
+    void AA() {
+        System.out.println("Black Red...");
+    }
+
+    void BB() {
+        System.out.println("White...");
+    }
+
+    void All() {
+        super.AA();
+        BB();
+    }
+}
+
+class Test2 {
+    public static void main(String args[]) {
+        MainColor2 d = new MainColor2();
+        d.All();
+    }
+}
+======================================
+
+3. super is used to invoke parent class constructor.
+
+class Black {
+    Black() {
+        System.out.println("Black Class");
+    }
+}
+
+class White extends Black {
+    White() {
+        super();
+        System.out.println("White Class");
+    }
+}
+
+class Test3 {
+    public static void main(String args[]) {
+        White d = new White();
+    }
+}
+
+
+
+===============================================
+THIS KEYWORD
+===============================================
+
+
+Here is given the 6 usage of java this keyword.
+
+1.this can be used to refer current class instance variable.
+
+class Test {
+    int rollno;
+    String name;
+
+    double cgpa;
+
+    Test(int rollno, String name, double cgpa) {
+        this.rollno = rollno;
+        this.name = name;
+        this.cgpa = cgpa;
+    }
+
+    void Display() {
+
+        System.out.println("Roll No: " + rollno);
+        System.out.println("Name: " + name);
+        System.out.println("CGPA: " + cgpa);
+    }
+
+}
+
+public class Student1 {
+    public static void main(String[] args) {
+        Test ob1 = new Test(1, "Nokia", 12.0);
+        Test ob2 = new Test(1, "Samsung", 30.0);
+        ob1.Display();
+        ob2.Display();
+
+    }
+}
+
+============================
+
+2.this can be used to invoke current class method (implicitly)
+
+
+class Test1 {
+
+    void First() {
+        this.Second();
+
+        System.out.println("Inside First function");
+    }
+
+    void Second() {
+        System.out.println("Inside Second funcion");
+    }
+}
+
+public class Student2 {
+    public static void main(String[] args) {
+        Test1 t1 = new Test1();
+        t1.First();
+    }
+}
+==========================================
+3.this() can be used to invoke current class constructor.
+
+
+class Test3 {
+
+    int a;
+    int b;
+
+    Test3() {
+        this(10, 20);
+        System.out.println("Inside  default constructor \n");
+    }
+
+    Test3(int a, int b) {
+        this.a = a;
+        this.b = b;
+        System.out.println(this.a + " " + this.b);
+        System.out.println("Inside parameterized constructor");
+    }
+}
+
+public class Student3 {
+    public static void main(String[] args) {
+        Test3 ob = new Test3();
+
+    }
+}
+
+
+
+==========================================
+4.this can be passed as an argument in the method call.
+
+class Test4 {
+    int a;
+    int b;
+
+    Test4() {
+        a = 10;
+        b = 20;
+    }
+
+    void display(Test4 obj) {
+        System.out.println("a = " + obj.a + "  b = " + obj.b);
+    }
+
+    void get() {
+        display(this);
+    }
+}
+
+public class Student4 {
+    public static void main(String[] args) {
+        Test4 obj = new Test4();
+        obj.get();
+    }
+}
+
+
+
+==========================================
+5.this can be passed as argument in the constructor call.
+
+class A {
+    B obj;
+
+    A(B obj) {
+        this.obj = obj;
+        obj.display();
+    }
+}
+
+class B {
+    int x = 5;
+
+    B() {
+        A obj = new A(this);
+    }
+
+    void display() {
+        System.out.println("Value of x in Class B : " + x);
+    }
+}
+
+public class Student5 {
+    public static void main(String[] args) {
+        B obj = new B();
+    }
+}
+
+
+==========================================
+6.this can be used to return the current class instance from the method.
+
+
+class Test6 {
+    int a;
+    int b;
+
+    Test6() {
+        a = 10;
+        b = 20;
+    }
+
+    Test6 get() {
+        return this;
+    }
+
+    void display() {
+        System.out.println("a = " + a + " b = " + b);
+    }
+}
+
+public class Student6 {
+    public static void main(String[] args) {
+        Test6 ob = new Test6();
+        ob.get().display();
+    }
+}
+
+
+==========================================

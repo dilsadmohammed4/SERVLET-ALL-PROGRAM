@@ -1,0 +1,154 @@
+1.Create an HTML file to input two numbers and a symbol like (+ , - , *, /,%). Invoke  an HTTPServlet to display the result as per given symbol.
+Ans:
+
+
+<html>
+
+<head>
+    <title>AllCases</title>
+</head>
+
+<body>
+    <form action="all">
+        Enter 1st number: <input type="text" name="num1"><br>
+        Enter 2nd number: <input type="text" name="num2"><br>
+        Enter a Symbol Like[+ , - , *, /,%]<input name="sym"><br>
+        <input type="submit">
+    </form>
+</body>
+
+</html>
+
+==================================================================================================
+
+
+<web-app>
+	<servlet>
+			<servlet-name>abc</servlet-name>
+			<servlet-class>AllSymbol</servlet-class>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>abc</servlet-name>
+			<url-pattern>/all</url-pattern>
+			</servlet-mapping >
+		</web-app>
+
+==================================================================================================
+
+import java.io.PrintWriter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class AllSymbol extends HttpServlet {
+
+    public void service(HttpServletRequest req, HttpServletResponse res) {
+        String num1 = req.getParameter("num1");
+        String num2 = req.getParameter("num2");
+        String sym = req.getParameter("sym");
+        try {
+            int i = Integer.parseInt(num1);
+            int j = Integer.parseInt(num2);
+            String k = sym;
+            int m = 0;
+            PrintWriter out = res.getWriter();
+            if (k.equals("+")) {
+                m = i + j;
+                out.println("a+b=" + m);
+            } else if (k.equals("-")) {
+                m = i - j;
+                out.println("a-b= " + m);
+            } else if (k.equals("*")) {
+                m = i * j;
+                out.println("a*b= " + m);
+            } else if (k.equals("/")) {
+                double n = i / j;
+                out.println("a/b= " + n);
+            } else if (k.equals("%")) {
+                double n = i % j;
+                out.println("a%b= " + n);
+            } else {
+
+                out.println("Symbol is not Correct.");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+==================================================================================================
+==================================================================================================
+
+2.Create an HTML file to input Your name and age. Invoke  an HTTPServlet to display your name , age and display a message whether you are  eligibility for voting or not.
+Ans:
+
+
+<html>
+
+<head>
+    <title>Vote Check</title>
+</head>
+
+<body>
+    <form action="vote">
+        Enter The Name: <input type="text" name="name"><br>
+        Enter The Age: <input type="text" name="num"><br>
+        <input type="submit">
+    </form>
+</body>
+
+</html>
+
+==================================================================================================
+
+<web-app>
+	<servlet>
+			<servlet-name>abc</servlet-name>
+			<servlet-class>VoteElg</servlet-class>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>abc</servlet-name>
+			<url-pattern>/vote</url-pattern>
+			</servlet-mapping >
+		</web-app>
+
+
+
+==================================================================================================
+
+
+
+import java.io.PrintWriter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class VoteElg extends HttpServlet {
+
+    public void service(HttpServletRequest req, HttpServletResponse res) {
+        String name = req.getParameter("name");
+        String num2 = req.getParameter("num");
+        try {
+            String i = name;
+            int j = Integer.parseInt(num2);
+
+            PrintWriter out = res.getWriter();
+            out.println("Name: " + i);
+            out.println("Age is: " + j);
+            if (j >= 18) {
+                out.println("Eligible For Voting.");
+            } else {
+                out.println("Not Eligible For Voting");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+
+==================================================================================================
+==================================================================================================

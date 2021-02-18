@@ -1,0 +1,149 @@
+1.Create an HTML file to input your name and to choose your favourite colour from a set of radio buttons  (red/ blue/ yellow/ green/ while/ pink/ black). Display the details through a servlet.
+Ans:-
+
+<html>
+
+<head>
+    <title>SetColor</title>
+</head>
+
+<body>
+    <form action="allColor">
+        Enter Name<input type="text" name="name1"><br><br>
+        Select a Color
+        </label> <br>
+        <input type="radio" name="color" value="Red" /> Red<br>
+        <input type="radio" name="color" value="Blue" /> Blue <br />
+        <input type="radio" name="color" value="Yellow" /> Yellow <br />
+        <input type="radio" name="color" value="Green" /> Green <br />
+        <input type="radio" name="color" value="White" /> White <br />
+        <input type="radio" name="color" value="Pink" /> Pink <br /><br>
+        <input type="submit">
+    </form>
+</body>
+
+</html>
+
+
+
+
+======================================================================================================
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class myColor extends HttpServlet {
+
+    public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        String name = req.getParameter("name1");
+        String color = req.getParameter("color");
+        PrintWriter out = res.getWriter();
+        out.println("Name:" + name);
+        out.println("Favorite Color:" + color);
+
+    }
+}
+
+
+======================================================================================================
+
+
+<web-app>
+	<servlet>
+			<servlet-name>abc</servlet-name>
+			<servlet-class>myColor</servlet-class>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>abc</servlet-name>
+			<url-pattern>/allColor</url-pattern>
+			</servlet-mapping >
+		</web-app>
+
+
+======================================================================================================
+======================================================================================================
+
+2.Create an HTML file to input product name  and choose your price from option buttons for two products and display total sum through servlet. 
+Ans:
+
+
+<html>
+
+<head>
+    <title>Product</title>
+</head>
+
+<body>
+    <form action="allPrice">
+        Enter 1st Product Name<input type="text" name="name1"><br>
+        Price:
+        </label> <br>
+        <input type="radio" name="price1" value="100" /> 100<br>
+        <input type="radio" name="price1" value="200" /> 200 <br />
+        <input type="radio" name="price1" value="300" /> 300 <br />
+        <input type="radio" name="price1" value="400" /> 400 <br /><br>
+        Enter 2nd Product Name<input type="text" name="name2"><br>
+        Price:
+        </label> <br>
+        <input type="radio" name="price2" value="100" /> 100<br>
+        <input type="radio" name="price2" value="200" /> 200 <br />
+        <input type="radio" name="price2" value="300" /> 300 <br />
+        <input type="radio" name="price2" value="400" /> 400 <br /><br>
+        <input type="submit">
+    </form>
+</body>
+
+</html>
+
+
+======================================================================================================
+
+<web-app>
+	<servlet>
+			<servlet-name>abc</servlet-name>
+			<servlet-class>proPrice</servlet-class>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>abc</servlet-name>
+			<url-pattern>/allPrice</url-pattern>
+			</servlet-mapping >
+		</web-app>
+
+
+======================================================================================================
+
+import java.io.PrintWriter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class proPrice extends HttpServlet {
+
+    public void service(HttpServletRequest req, HttpServletResponse res) {
+        try {
+            String name1 = req.getParameter("name1");
+            String name2 = req.getParameter("name2");
+            String price1 = req.getParameter("price1");
+            String price2 = req.getParameter("price2");
+            int i = Integer.parseInt(price1);
+            int j = Integer.parseInt(price2);
+            PrintWriter out = res.getWriter();
+            out.println("Product 1: " + name1);
+            out.println("Price: " + i);
+            out.println("Product 2: " + name2);
+            out.println("Price: " + j);
+            int price = i + j;
+            out.println("Total Price: " + price);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+======================================================================================================
+======================================================================================================

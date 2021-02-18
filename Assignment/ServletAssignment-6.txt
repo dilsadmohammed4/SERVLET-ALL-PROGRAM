@@ -1,0 +1,145 @@
+1.Create and execute an httpServlet to display your name and mobile number.
+Ans:
+
+
+<web-app>	
+	<servlet>
+			<servlet-name>abc</servlet-name>
+			<servlet-class>PrintName</servlet-class>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>abc</servlet-name>
+			<url-pattern>/test</url-pattern>
+			</servlet-mapping >
+		</web-app>
+===================================================================================
+
+
+import javax.servlet.http.*;
+import javax.servlet.*;
+import java.io.*;
+
+public class PrintName extends HttpServlet {
+    public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        res.setContentType("text/html");
+        PrintWriter pw = res.getWriter();
+        pw.println("<html><body>");
+        pw.println("Dilsad Mohammed.");
+        pw.println("</br>");
+        pw.println("7377983977");
+
+        pw.println("</body></html>");
+
+        pw.close();
+    }
+}
+
+===================================================================================
+===================================================================================
+
+2.Create and execute a Generic Servlet to display welcome message.
+Ans:
+
+
+
+<web-app>
+	<servlet>
+		<servlet-name>abc</servlet-name>
+		<servlet-class>GenServ</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>abc</servlet-name>
+		<url-pattern>/text</url-pattern>
+	</servlet-mapping>
+</web-app>
+
+===================================================================================
+
+
+import java.io.PrintWriter;
+import javax.servlet.GenericServlet;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+public class GenServ extends GenericServlet {
+
+    public void service(ServletRequest request, ServletResponse response) {
+        response.setContentType("text/html");
+        try {
+            PrintWriter out = response.getWriter();
+            out.println("<html><body>");
+            out.println("<h1>Welcome to Generic Servlet</h1>");
+            out.println("</body></html>");
+            out.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+
+
+
+===================================================================================
+===================================================================================
+
+3.Create and execute an httpServlet to input two numbers and display their sum.
+Ans:
+
+
+<html>
+
+<head>
+    <title>AddNumber</title>
+</head>
+
+<body>
+    <form action="sum">
+        Enter 1st number: <input type="text" name="num1"><br>
+        Enter 2nd number: <input type="text" name="num2"><br>
+        <input type="submit">
+    </form>
+</body>
+
+</html>
+
+===================================================================================
+
+<web-app>
+	<servlet>
+		<servlet-name>abc</servlet-name>
+		<servlet-class>AddNo</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>abc</servlet-name>
+		<url-pattern>/sum</url-pattern>
+	</servlet-mapping >
+</web-app>
+
+===================================================================================
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class AddNo extends HttpServlet {
+
+    public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        String num1 = req.getParameter("num1");
+        String num2 = req.getParameter("num2");
+        int i = Integer.parseInt(num1);
+        int j = Integer.parseInt(num2);
+
+        int k = i + j;
+        PrintWriter out = res.getWriter();
+        out.println("Sum is: " + k);
+    }
+}
+
+
+===================================================================================
+===================================================================================
