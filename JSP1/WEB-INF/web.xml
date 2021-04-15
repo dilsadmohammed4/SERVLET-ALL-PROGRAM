@@ -1,0 +1,10 @@
+<web-app>
+    <servlet>
+        <servlet-name>ServletComm</servlet-name>
+        <servlet-class>ServletComm</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletComm</servlet-name>
+        <url-pattern>/ServletComm</url-pattern>
+    </servlet-mapping>
+</web-app>

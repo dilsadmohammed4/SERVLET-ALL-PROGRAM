@@ -1,0 +1,34 @@
+<web-app>
+    <servlet>
+        <servlet-name>WelcomeMessage</servlet-name>
+        <servlet-class>WelcomeMessage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SumNo</servlet-name>
+        <servlet-class>SumNo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DisplayAddress</servlet-name>
+        <servlet-class>DisplayAddress</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AllServ</servlet-name>
+        <servlet-class>AllServ</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WelcomeMessage</servlet-name>
+        <url-pattern>/WelcomeMessage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SumNo</servlet-name>
+        <url-pattern>/SumNo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DisplayAddress</servlet-name>
+        <url-pattern>/DisplayAddress</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllServ</servlet-name>
+        <url-pattern>/AllServ</url-pattern>
+    </servlet-mapping>
+</web-app>

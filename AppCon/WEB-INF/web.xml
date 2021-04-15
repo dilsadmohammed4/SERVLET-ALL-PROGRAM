@@ -1,0 +1,14 @@
+<web-app>
+    <servlet>
+    <servlet-name>abc</servlet-name>
+    <servlet-class>Fact </servlet-class>
+    </servlet>
+    <context-param>
+    <param-name>driver</param-name>
+    <param-value>Dipesh Jain</param-value>
+    </context-param>
+    <servlet-mapping>
+    <servlet-name>abc</servlet-name>
+    <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+    </web-app>

@@ -1,0 +1,10 @@
+<web-app>
+	<servlet>
+		<servlet-name>Check</servlet-name>
+		<servlet-class>Check</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Check</servlet-name>
+		<url-pattern>/pass</url-pattern>
+	</servlet-mapping>
+</web-app>

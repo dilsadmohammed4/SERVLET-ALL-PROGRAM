@@ -1,0 +1,12 @@
+<web-app>
+  <servlet>
+    <servlet-name>Insert</servlet-name>
+    <servlet-class>StudentMark</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Insert</servlet-name>
+    <url-pattern>/record</url-pattern>
+  </servlet-mapping>
+
+</web-app>

@@ -1,0 +1,28 @@
+<web-app>
+    <servlet>
+        <servlet-name>f</servlet-name>
+        <servlet-class>FirstServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>f</servlet-name>
+        <url-pattern>/FirstServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>s</servlet-name>
+        <servlet-class>SecondServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>s</servlet-name>
+        <url-pattern>/SecondServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>t</servlet-name>
+        <servlet-class>ThirdServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>t</servlet-name>
+        <url-pattern>/ThirdServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>

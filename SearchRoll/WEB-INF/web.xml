@@ -1,0 +1,12 @@
+<web-app>
+  <servlet>
+    <servlet-name>Search</servlet-name>
+    <servlet-class>Search</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Search</servlet-name>
+    <url-pattern>/find</url-pattern>
+  </servlet-mapping>
+
+</web-app>

@@ -1,0 +1,38 @@
+<web-app>
+    <servlet>
+        <servlet-name>AllPeople</servlet-name>
+        <servlet-class>AllPeople</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AllPeople</servlet-name>
+        <url-pattern>/AllPeople</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Profession</servlet-name>
+        <servlet-class>Profession</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Profession</servlet-name>
+        <url-pattern>/Profession</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>Teacher</servlet-name>
+        <servlet-class>Teacher</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Teacher</servlet-name>
+        <url-pattern>/Teacher</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Student</servlet-name>
+        <servlet-class>Student</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Student</servlet-name>
+        <url-pattern>/Student</url-pattern>
+    </servlet-mapping>
+
+</web-app>

@@ -1,0 +1,56 @@
+<web-app>
+
+    <servlet>
+        <servlet-name>Calculate</servlet-name>
+        <servlet-class>Calculate</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Calculate</servlet-name>
+        <url-pattern>/Calculate</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>Register</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+
+        <servlet-name>FirstServlet</servlet-name>
+
+        <servlet-class>FirstServlet</servlet-class>
+
+    </servlet>
+    <servlet>
+
+        <servlet-name>WelcomeServlet</servlet-name>
+
+        <servlet-class>WelcomeServlet</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+
+        <servlet-name>FirstServlet</servlet-name>
+
+        <url-pattern>/servlet1</url-pattern>
+
+    </servlet-mapping>
+    <servlet-mapping>
+
+        <servlet-name>WelcomeServlet</servlet-name>
+
+        <url-pattern>/servlet2</url-pattern>
+
+    </servlet-mapping>
+
+
+    <welcome-file-list>
+
+        <welcome-file>login.html</welcome-file>
+
+    </welcome-file-list>
+
+</web-app>

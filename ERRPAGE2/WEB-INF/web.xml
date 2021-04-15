@@ -1,0 +1,6 @@
+<web-app>
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/erpage.jsp</location>
+    </error-page>
+</web-app>

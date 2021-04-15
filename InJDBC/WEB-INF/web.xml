@@ -1,0 +1,12 @@
+<web-app>
+    <servlet>
+      <servlet-name>JDBCInsert</servlet-name>
+      <servlet-class>JDBCInsert</servlet-class>
+    </servlet>
+  
+    <servlet-mapping>
+      <servlet-name>JDBCInsert</servlet-name>
+      <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    
+  </web-app>
